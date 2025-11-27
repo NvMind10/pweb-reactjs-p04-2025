@@ -28,32 +28,45 @@ export default function Login() {
     }
   };
 
-  return (
-    <div className="max-w-sm mx-auto p-4">
-      <h1 className="text-xl font-semibold mb-4">Login</h1>
+ return (
+  <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+    <div className="w-full max-w-sm bg-white rounded-xl shadow-lg p-6">
+      <h1 className="text-2xl font-semibold mb-4 text-center">Login</h1>
+
       <form onSubmit={onSubmit} className="space-y-3">
         <input
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Email"
           type="email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
+
         <input
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Password"
           type="password"
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
-        {err && <p className="text-red-600 text-sm">{err}</p>}
-        <button disabled={loading} className="w-full bg-black text-white p-2 rounded">
+
+        {err && <p className="text-red-600 text-sm text-center">{err}</p>}
+
+        <button
+          disabled={loading}
+          className="w-full bg-black text-white p-2 rounded-md font-medium hover:bg-gray-900 disabled:opacity-60"
+        >
           {loading ? "Loading..." : "Masuk"}
         </button>
       </form>
-      <p className="mt-3 text-sm">
-        Belum punya akun? <Link to="/register" className="underline">Register</Link>
+
+      <p className="mt-4 text-sm text-center">
+        Belum punya akun?{" "}
+        <Link to="/register" className="text-blue-600 hover:underline">
+          Register
+        </Link>
       </p>
     </div>
-  );
+  </div>
+);
 }
